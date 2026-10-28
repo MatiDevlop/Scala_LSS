@@ -1,0 +1,129 @@
+======================================================================
+                    REPORTE DE ANÁLISIS LÉXICO                        
+======================================================================
+Archivo analizado : algoritmo1.scala
+Ruta fuente       : algoritmos de prueba/Morocho Sani Kevin Matías/algoritmo1.scala
+Responsable       : KevinMorocho
+Fecha y hora      : 27/10/2026 20:00:08
+======================================================================
+
+LÍNEA   TIPO DE TOKEN            LEXEMA
+----------------------------------------------------------------------
+1       VAL                      val
+1       ID                       piFloat
+1       TYPE_FLOAT               Float
+1       EQUALS                   =
+1       FLOAT_LITERAL            3.141592
+2       VAR                      var
+2       ID                       contadorEntero
+2       TYPE_INT                 Int
+2       EQUALS                   =
+2       INT_LITERAL              0
+3       VAL                      val
+3       ID                       mensaje
+3       TYPE_STRING              String
+3       EQUALS                   =
+3       STRING_LITERAL           Inicia el procesamiento...
+5       VAR                      var
+5       ID                       acumulado
+5       TYPE_FLOAT               Float
+5       EQUALS                   =
+5       FLOAT_LITERAL            100.5
+6       ID                       acumulador
+6       PLUS_EQUAL               +=
+6       INT_LITERAL              20
+6       INT_LITERAL              4
+7       ID                       acumulador
+7       MINUS_EQUAL              -=
+7       INT_LITERAL              2
+8       ID                       acumulador
+8       TIMES_EQUAL              *=
+8       INT_LITERAL              2
+9       ID                       acumulador
+9       DIVIDE_EQUAL             /=
+9       INT_LITERAL              2
+11      VAR                      var
+11      ID                       operacion_modulo
+11      TYPE_INT                 Int
+11      EQUALS                   =
+11      INT_LITERAL              17
+11      MODULE                   %
+11      INT_LITERAL              4
+12      ID                       contadorEntero
+12      PLUS_EQUAL               +=
+12      INT_LITERAL              1
+14      VAL                      val
+14      ID                       esValido
+14      TYPE_BOOLEAN             Boolean
+14      EQUALS                   =
+14      ID                       contadorCiclos
+14      GREATER_THAN             >
+14      INT_LITERAL              0
+14      AND                      &&
+14      ID                       acumulador
+14      GREATER_THAN_OR_EQUAL_TO >=
+14      FLOAT_LITERAL            50.0
+14      OR                       ||
+14      FALSE                    false
+15      VAL                      val
+15      ID                       estadoAlerta
+15      TYPE_BOOLEAN             Boolean
+15      EQUALS                   =
+15      NOT                      !
+15      ID                       residuo
+15      EQUAL_TO                 ==
+15      INT_LITERAL              0
+15      AND                      &&
+15      ID                       factorEscala
+15      LESS_THAN_OR_EQUAL_TO    <=
+15      FLOAT_LITERAL            5.0
+16      VAL                      val
+16      ID                       verificacionExacta
+16      TYPE_BOOLEAN             Boolean
+16      EQUALS                   =
+16      ID                       acumulador
+16      NOT_EQUAL_TO             !=
+16      FLOAT_LITERAL            0.0
+16      OR                       ||
+16      ID                       contadorCiclos
+16      LESS_THAN                <
+16      INT_LITERAL              10
+18      VAL                      val
+18      ID                       lista
+18      TYPE_LIST                List
+18      TYPE_INT                 Int
+18      EQUALS                   =
+18      TYPE_LIST                List
+18      INT_LITERAL              10
+18      INT_LITERAL              20
+
+======================================================================
+REGISTRO DE ERRORES LÉXICOS
+======================================================================
+Total de errores detectados: 25
+
+[ERROR LÉXICO] Línea 1, Columna 12: Carácter no reconocido ':'. Símbolo no definido en el alfabeto de Scala.
+[ERROR LÉXICO] Línea 2, Columna 19: Carácter no reconocido ':'. Símbolo no definido en el alfabeto de Scala.
+[ERROR LÉXICO] Línea 3, Columna 12: Carácter no reconocido ':'. Símbolo no definido en el alfabeto de Scala.
+[ERROR LÉXICO] Línea 5, Columna 14: Carácter no reconocido ':'. Símbolo no definido en el alfabeto de Scala.
+[ERROR LÉXICO] Línea 6, Columna 17: Carácter no reconocido '.'. Símbolo no definido en el alfabeto de Scala.
+[ERROR LÉXICO] Línea 11, Columna 21: Carácter no reconocido ':'. Símbolo no definido en el alfabeto de Scala.
+[ERROR LÉXICO] Línea 14, Columna 13: Carácter no reconocido ':'. Símbolo no definido en el alfabeto de Scala.
+[ERROR LÉXICO] Línea 14, Columna 25: Carácter no reconocido '('. Símbolo no definido en el alfabeto de Scala.
+[ERROR LÉXICO] Línea 14, Columna 67: Carácter no reconocido ')'. Símbolo no definido en el alfabeto de Scala.
+[ERROR LÉXICO] Línea 15, Columna 17: Carácter no reconocido ':'. Símbolo no definido en el alfabeto de Scala.
+[ERROR LÉXICO] Línea 15, Columna 30: Carácter no reconocido '('. Símbolo no definido en el alfabeto de Scala.
+[ERROR LÉXICO] Línea 15, Columna 43: Carácter no reconocido ')'. Símbolo no definido en el alfabeto de Scala.
+[ERROR LÉXICO] Línea 15, Columna 48: Carácter no reconocido '('. Símbolo no definido en el alfabeto de Scala.
+[ERROR LÉXICO] Línea 15, Columna 69: Carácter no reconocido ')'. Símbolo no definido en el alfabeto de Scala.
+[ERROR LÉXICO] Línea 16, Columna 23: Carácter no reconocido ':'. Símbolo no definido en el alfabeto de Scala.
+[ERROR LÉXICO] Línea 16, Columna 35: Carácter no reconocido '('. Símbolo no definido en el alfabeto de Scala.
+[ERROR LÉXICO] Línea 16, Columna 54: Carácter no reconocido ')'. Símbolo no definido en el alfabeto de Scala.
+[ERROR LÉXICO] Línea 16, Columna 59: Carácter no reconocido '('. Símbolo no definido en el alfabeto de Scala.
+[ERROR LÉXICO] Línea 16, Columna 79: Carácter no reconocido ')'. Símbolo no definido en el alfabeto de Scala.
+[ERROR LÉXICO] Línea 18, Columna 10: Carácter no reconocido ':'. Símbolo no definido en el alfabeto de Scala.
+[ERROR LÉXICO] Línea 18, Columna 16: Carácter no reconocido '['. Símbolo no definido en el alfabeto de Scala.
+[ERROR LÉXICO] Línea 18, Columna 20: Carácter no reconocido ']'. Símbolo no definido en el alfabeto de Scala.
+[ERROR LÉXICO] Línea 18, Columna 28: Carácter no reconocido '('. Símbolo no definido en el alfabeto de Scala.
+[ERROR LÉXICO] Línea 18, Columna 31: Carácter no reconocido ','. Símbolo no definido en el alfabeto de Scala.
+[ERROR LÉXICO] Línea 18, Columna 35: Carácter no reconocido ')'. Símbolo no definido en el alfabeto de Scala.
