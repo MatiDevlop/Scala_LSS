@@ -1,3 +1,4 @@
+// Sección válida
 val piFloat: Float = 3.141592F
 var contadorEntero: Int = 0
 val mensaje: String = "Inicia el procesamiento..."
@@ -16,3 +17,7 @@ val estadoAlerta: Boolean = !(residuo == 0) && (factorEscala <= 5.0f)
 val verificacionExacta: Boolean = (acumulador != 0.0f) || (contadorCiclos < 10)
 
 val lista: List[Int] = List(10, 20)
+
+//Errores intencionales
+var edad: Integer = 57?54==30
+val comparacion: Boolean = edad == 50¿

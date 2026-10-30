@@ -1,0 +1,148 @@
+======================================================================
+                    REPORTE DE ANÁLISIS LÉXICO                        
+======================================================================
+Archivo analizado : algoritmo1.scala
+Ruta fuente       : algoritmos de prueba/Morocho Sani Kevin Matías/algoritmo1.scala
+Responsable       : KevinMorocho
+Fecha y hora      : 30/10/2026 08:49:27
+======================================================================
+
+LÍNEA   TIPO DE TOKEN            LEXEMA
+----------------------------------------------------------------------
+2       VAL                      val
+2       ID                       piFloat
+2       COLON                    :
+2       TYPE_FLOAT               Float
+2       EQUALS                   =
+2       FLOAT_LITERAL            3.141592
+3       VAR                      var
+3       ID                       contadorEntero
+3       COLON                    :
+3       TYPE_INT                 Int
+3       EQUALS                   =
+3       INT_LITERAL              0
+4       VAL                      val
+4       ID                       mensaje
+4       COLON                    :
+4       TYPE_STRING              String
+4       EQUALS                   =
+4       STRING_LITERAL           Inicia el procesamiento...
+6       VAR                      var
+6       ID                       acumulado
+6       COLON                    :
+6       TYPE_FLOAT               Float
+6       EQUALS                   =
+6       FLOAT_LITERAL            100.5
+7       ID                       acumulador
+7       PLUS_EQUAL               +=
+7       INT_LITERAL              20
+7       DOT                      .
+7       INT_LITERAL              4
+8       ID                       acumulador
+8       MINUS_EQUAL              -=
+8       INT_LITERAL              2
+9       ID                       acumulador
+9       TIMES_EQUAL              *=
+9       INT_LITERAL              2
+10      ID                       acumulador
+10      DIVIDE_EQUAL             /=
+10      INT_LITERAL              2
+12      VAR                      var
+12      ID                       operacion_modulo
+12      COLON                    :
+12      TYPE_INT                 Int
+12      EQUALS                   =
+12      INT_LITERAL              17
+12      MODULE                   %
+12      INT_LITERAL              4
+13      ID                       contadorEntero
+13      PLUS_EQUAL               +=
+13      INT_LITERAL              1
+15      VAL                      val
+15      ID                       esValido
+15      COLON                    :
+15      TYPE_BOOLEAN             Boolean
+15      EQUALS                   =
+15      LPAREN                   (
+15      ID                       contadorCiclos
+15      GREATER_THAN             >
+15      INT_LITERAL              0
+15      AND                      &&
+15      ID                       acumulador
+15      GREATER_THAN_OR_EQUAL_TO >=
+15      FLOAT_LITERAL            50.0
+15      RPAREN                   )
+15      OR                       ||
+15      FALSE                    false
+16      VAL                      val
+16      ID                       estadoAlerta
+16      COLON                    :
+16      TYPE_BOOLEAN             Boolean
+16      EQUALS                   =
+16      NOT                      !
+16      LPAREN                   (
+16      ID                       residuo
+16      EQUAL_TO                 ==
+16      INT_LITERAL              0
+16      RPAREN                   )
+16      AND                      &&
+16      LPAREN                   (
+16      ID                       factorEscala
+16      LESS_THAN_OR_EQUAL_TO    <=
+16      FLOAT_LITERAL            5.0
+16      RPAREN                   )
+17      VAL                      val
+17      ID                       verificacionExacta
+17      COLON                    :
+17      TYPE_BOOLEAN             Boolean
+17      EQUALS                   =
+17      LPAREN                   (
+17      ID                       acumulador
+17      NOT_EQUAL_TO             !=
+17      FLOAT_LITERAL            0.0
+17      RPAREN                   )
+17      OR                       ||
+17      LPAREN                   (
+17      ID                       contadorCiclos
+17      LESS_THAN                <
+17      INT_LITERAL              10
+17      RPAREN                   )
+19      VAL                      val
+19      ID                       lista
+19      COLON                    :
+19      TYPE_LIST                List
+19      LBRACKET                 [
+19      TYPE_INT                 Int
+19      RBRACKET                 ]
+19      EQUALS                   =
+19      TYPE_LIST                List
+19      LPAREN                   (
+19      INT_LITERAL              10
+19      COMMA                    ,
+19      INT_LITERAL              20
+19      RPAREN                   )
+22      VAR                      var
+22      ID                       edad
+22      COLON                    :
+22      ID                       Integer
+22      EQUALS                   =
+22      INT_LITERAL              57
+22      INT_LITERAL              54
+22      EQUAL_TO                 ==
+22      INT_LITERAL              30
+23      VAL                      val
+23      ID                       comparacion
+23      COLON                    :
+23      TYPE_BOOLEAN             Boolean
+23      EQUALS                   =
+23      ID                       edad
+23      EQUAL_TO                 ==
+23      INT_LITERAL              50
+
+======================================================================
+REGISTRO DE ERRORES LÉXICOS
+======================================================================
+Total de errores detectados: 2
+
+[ERROR LÉXICO] Línea 22, Columna 23: Carácter no reconocido '?'. Símbolo no definido en el alfabeto de Scala.
+[ERROR LÉXICO] Línea 23, Columna 38: Carácter no reconocido '¿'. Símbolo no definido en el alfabeto de Scala.
