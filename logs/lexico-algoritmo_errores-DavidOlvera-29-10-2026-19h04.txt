@@ -1,0 +1,31 @@
+======================================================================
+                    REPORTE DE ANÁLISIS LÉXICO                        
+======================================================================
+Archivo analizado : algoritmo_errores.scala
+Ruta fuente       : algoritmos de prueba\Olvera Vera David Mateo\algoritmo_errores.scala
+Responsable       : DavidOlvera
+Fecha y hora      : 29/10/2026 19:04:37
+======================================================================
+
+LÍNEA   TIPO DE TOKEN            LEXEMA
+----------------------------------------------------------------------
+1       VAL                      val
+1       ID                       x
+1       COLON                    :
+1       TYPE_INT                 Int
+1       EQUALS                   =
+1       INT_LITERAL              5
+2       VAL                      val
+2       ID                       y
+2       EQUALS                   =
+2       INT_LITERAL              10
+2       INT_LITERAL              2
+
+======================================================================
+REGISTRO DE ERRORES LÉXICOS
+======================================================================
+Total de errores detectados: 3
+
+[ERROR LÉXICO] Línea 1, Columna 16: Carácter no reconocido '@'. Símbolo no definido en el alfabeto de Scala.
+[ERROR LÉXICO] Línea 2, Columna 12: Carácter no reconocido '#'. Símbolo no definido en el alfabeto de Scala.
+[ERROR LÉXICO] Línea 3: Comentario multilínea sin cerrar ('*/' no encontrado).
