@@ -30,3 +30,4 @@ Al ejecutar el script, la consola solicitará de manera interactiva la siguiente
    Las opciones disponibles por el momento son:
    - `algoritmo1`
    - `algoritmo_errores`
+   - `algoritmo2`
