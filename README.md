@@ -5,13 +5,13 @@
 Para ejecutar las pruebas del analizador léxico, abra una terminal y ejecute el siguiente comando:
 
 ```bash
-python text_lexer.py
+python test_lexer.py
 ```
 
 Si desea ejecutar las preubas del analizador sintáctico, ejecute el siguiente comando en la consola:
 
 ```bash
-python text_parser.py
+python test_parser.py
 ```
 
 ### 📋 Flujo de Ejecución
