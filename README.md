@@ -1,13 +1,17 @@
 # Scala_LSS
 
-Este repositorio contiene las pruebas y herramientas para la ejecución e inspección del analizador léxico.
+## 🚀 Pruebas del Analizador Léxico y Sintáctico
 
-## 🚀 Pruebas del Analizador Léxico
-
-Para ejecutar las pruebas del analizador léxico, abre una terminal y corre el siguiente comando:
+Para ejecutar las pruebas del analizador léxico, abra una terminal y ejecute el siguiente comando:
 
 ```bash
-python generador_logs.py
+python text_lexer.py
+```
+
+Si desea ejecutar las preubas del analizador sintáctico, ejecute el siguiente comando en la consola:
+
+```bash
+python text_parser.py
 ```
 
 ### 📋 Flujo de Ejecución
