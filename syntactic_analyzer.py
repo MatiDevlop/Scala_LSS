@@ -116,13 +116,3 @@ def p_error(p):
     print("Error sintáctico en la línea %d: '%s'" % (p.lineno, p.value))
 
 parser = yacc.yacc()
-
-while True:
-    try:
-        s = input('scala> ')
-    except EOFError:
-        break
-    if not s:
-        continue
-    result = parser.parse(s)
-    print(result)
