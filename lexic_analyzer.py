@@ -9,6 +9,7 @@ reserved = {
     "String" : "TYPE_STRING",    
     "Array" : "TYPE_ARRAY",
     "List" : "TYPE_LIST",
+    "Char" : "TYPE_CHAR",
     #variables y funciones
     "val" : "VAL",
     "var" : "VAR",
@@ -25,6 +26,11 @@ reserved = {
     "to" : "TO",
     #retorno
     "return" : "RETURN",
+    #impresion y entrada de datos
+    "println" : "PRINTLN",
+    "print" : "PRINT",
+    "readLine" : "READLINE",
+    "readInt" : "READINT",
 }
 
 
@@ -34,6 +40,7 @@ tokens =[
     "INT_LITERAL",
     "FLOAT_LITERAL",
     "STRING_LITERAL",
+    "CHAR_LITERAL",
     #Operadores aritmeticos
     "PLUS",
     "MINUS",
@@ -110,6 +117,7 @@ t_DOT = r'\.'
 t_ARROW_LEFT = r'<-'
 t_ARROW_RIGHT = r'=>'
 
+
 #comentarios
 def t_COMMENT_SINGLE(t):
     r'//[^\n]*'
@@ -139,6 +147,11 @@ def t_INT_LITERAL(t):
 
 def t_STRING_LITERAL(t):
     r'\"([^\\\n]|(\\.))*?\"'
+    t.value = t.value[1:-1]
+    return t
+
+def t_CHAR_LITERAL(t):
+    r"'([^\\\n']|\\.)'"
     t.value = t.value[1:-1]
     return t
 
