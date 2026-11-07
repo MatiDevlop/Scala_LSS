@@ -1,0 +1,35 @@
+==================================================
+       REPORTE DEL ANALIZADOR SINTÁCTICO           
+==================================================
+Responsable del Algoritmo : Dmolvera
+Carpeta del Integrante    : Olvera Vera David Mateo
+Archivo Analizado         : algoritmo2.scala
+Fecha y Hora de Ejecución : 2026-11-07_03-20-09
+==================================================
+
+--- CÓDIGO FUENTE EVALUADO ---
+001 | val lista: List[Int] = List(10, 20, 30)
+002 | def esPar(n: Int): Boolean = (n % 2) == 0
+003 | val multiplicar = (x: Int, y: Int) => x * y
+004 | val doble = (x: Int) => x * 2
+005 | val nombre: String = scala.io.StdIn.readLine()
+006 | val edad: Int = scala.io.StdIn.readInt()
+007 | println("Registro completado")
+008 | print(edad)
+009 | val par = esPar(edad)
+010 | if (edad >= 18 && !par) {
+011 |   println("mayor impar")
+012 | } else if (edad == 18 || edad < 5) {
+013 |   println("caso especial")
+014 | } else {
+015 |   println("otro")
+016 | }
+017 | val resultado = multiplicar(3, 4)
+018 | val letra: Char = 'a'
+==================================================
+
+--- RESULTADO DEL ANÁLISIS SINTÁCTICO ---
+ESTADO: ÉXITO (0 Errores Sintácticos)
+El código analizado cumple con todas las reglas gramaticales definidas.
+
+==================================================

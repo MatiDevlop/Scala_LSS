@@ -1,0 +1,19 @@
+==================================================
+       REPORTE DEL ANALIZADOR SINTÁCTICO           
+==================================================
+Responsable del Algoritmo : Dmolvera
+Carpeta del Integrante    : Olvera Vera David Mateo
+Archivo Analizado         : algoritmo2_error.scala
+Fecha y Hora de Ejecución : 2026-11-07_03-21-25
+==================================================
+
+--- CÓDIGO FUENTE EVALUADO ---
+001 | def esPar(n Int): Boolean = (n % 2) == 0
+==================================================
+
+--- RESULTADO DEL ANÁLISIS SINTÁCTICO ---
+ESTADO: FALLO (1 Errores Encontrados)
+
+ [ERROR] Error sintáctico en línea 1: Token inesperado 'Int' (Tipo: TYPE_INT)
+
+==================================================
