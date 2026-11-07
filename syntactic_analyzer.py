@@ -29,8 +29,12 @@ def p_block(p):
     pass
 
 def p_asignacion(p):
-    '''asignacion : mutabilidad ID EQUALS expression opt_semicolon 
-                    | mutabilidad ID COLON tipo EQUALS expression opt_semicolon'''
+    '''asignacion : mutabilidad ID EQUALS expression opt_semicolon'''
+    pass
+
+def p_asignacion_tipada(p):
+    '''asignacion : mutabilidad ID COLON tipo EQUALS expression opt_semicolon'''
+    pass
 
 def p_mutabilidad(p):
     '''mutabilidad : VAL
@@ -41,6 +45,7 @@ def p_tipo(p):
     '''tipo : TYPE_INT
             | TYPE_FLOAT
             | TYPE_STRING
+            | TYPE_CHAR
             | TYPE_BOOLEAN
             | TYPE_ARRAY
             | TYPE_LIST'''
@@ -95,6 +100,7 @@ def p_expression(p):
                   | INT_LITERAL
                   | FLOAT_LITERAL
                   | STRING_LITERAL
+                  | CHAR_LITERAL
                   | TRUE
                   | FALSE
                   | ID'''
