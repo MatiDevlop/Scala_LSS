@@ -1,0 +1,1 @@
+def esPar(n Int): Boolean = (n % 2) == 0
