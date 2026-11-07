@@ -26,3 +26,6 @@ for (i <- 1 to 3) {
 
 val area: Float = calcularArea(2.5f, 4.0f)
 val activo: Boolean = true && !false
+
+println("Hola")
+val letra: Char = 'a'
