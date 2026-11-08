@@ -8,7 +8,7 @@ var notaActual: Int = 0
 val listaEstudiantes: List[Int] = List(1, 2, 3, 4, 5)
 
 // --- Definición de una función auxiliar ---
-def mostrarMensaje(mensaje: String) = println(mensaje)
+def mostrarMensaje(mensaje: String): String = mensaje
 
 // --- Bucle para procesar la lista de estudiantes ---
 for (estudianteId <- 1 to 5) {
@@ -31,4 +31,14 @@ for (estudianteId <- 1 to 5) {
 // --- Bucle No Condicionado (For): Simulación de Reporte Final ---
 for (i <- 1 to 3) {
     println(i * 10)
+}
+
+def sumarNumero(numeroA:Int, numeroB:Int):Int = {
+    val resultado = numeroA + numeroB
+    resultado
+}
+
+def calcularAreaRectangulo(base:Float, altura:Float):Float = {
+    val resultado = base * altura
+    return resultado
 }

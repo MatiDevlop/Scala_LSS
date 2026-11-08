@@ -116,6 +116,25 @@ def p_empty(p):
     'empty :'
     pass
 
+def p_tipo_array(p):
+    '''tipo : TYPE_ARRAY LBRACKET tipo RBRACKET'''
+    pass
+
+def p_expression_array(p):
+    '''expression : TYPE_ARRAY LPAREN argument_list RPAREN'''
+    pass
+
+def p_function_def_block(p):
+    '''function_def : DEF ID LPAREN param_list RPAREN COLON tipo EQUALS block'''
+    pass
+
+def p_return_statement(p):
+    '''statement : RETURN expression opt_semicolon'''
+    pass
+
+def p_statement_expression(p):
+    '''statement : expression opt_semicolon'''
+    pass
 #-----Inicio de reglas de David Olvera -----
 
 #estructura de datos: List

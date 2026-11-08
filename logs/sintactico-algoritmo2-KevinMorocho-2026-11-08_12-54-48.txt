@@ -1,0 +1,56 @@
+==================================================
+       REPORTE DEL ANALIZADOR SINTÁCTICO           
+==================================================
+Responsable del Algoritmo : KevinMorocho
+Carpeta del Integrante    : Morocho Sani Kevin Matías
+Archivo Analizado         : algoritmo2.scala
+Fecha y Hora de Ejecución : 2026-11-08_12-54-48
+==================================================
+
+--- CÓDIGO FUENTE EVALUADO ---
+001 | // --- Declaración e Inicialización de Variables y Listas ---
+002 | val limiteAprobacion: Int = 60
+003 | var contadorAprobados: Int = 0
+004 | var sumaTotalNotas: Float = 0.0f
+005 | var notaActual: Int = 0
+006 | 
+007 | // Lista de IDs de estudiantes
+008 | val listaEstudiantes: List[Int] = List(1, 2, 3, 4, 5)
+009 | 
+010 | // --- Definición de una función auxiliar ---
+011 | def mostrarMensaje(mensaje: String): String = mensaje
+012 | 
+013 | // --- Bucle para procesar la lista de estudiantes ---
+014 | for (estudianteId <- 1 to 5) {
+015 |     // Ingresar datos por teclado para simular o actualizar la nota actual
+016 |     print("Ingrese la nota actual para el estudiante: ")
+017 |     notaActual = readInt()
+018 | 
+019 |     // Evaluamos el estado del estudiante mediante una Estructura Condicional (If / Else)
+020 |     if (notaActual >= limiteAprobacion) {
+021 |         println("Estudiante Aprobado")
+022 |         contadorAprobados += 1
+023 |     } else {
+024 |         println("Estudiante Reprobado")
+025 |     }
+026 | 
+027 |     // Acumulamos y actualizamos contadores mediante Asignación Compuesta
+028 |     sumaTotalNotas += notaActual
+029 | }
+030 | 
+031 | // --- Bucle No Condicionado (For): Simulación de Reporte Final ---
+032 | for (i <- 1 to 3) {
+033 |     println(i * 10)
+034 | }
+035 | 
+036 | def sumarNumero(numeroA:Int, numeroB:Int): Int = {
+037 |     val resultado = numeroA + numeroB
+038 |     resultado
+039 | }
+==================================================
+
+--- RESULTADO DEL ANÁLISIS SINTÁCTICO ---
+ESTADO: ÉXITO (0 Errores Sintácticos)
+El código analizado cumple con todas las reglas gramaticales definidas.
+
+==================================================
