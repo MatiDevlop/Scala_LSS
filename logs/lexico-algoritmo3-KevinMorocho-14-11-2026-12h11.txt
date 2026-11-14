@@ -1,0 +1,185 @@
+======================================================================
+                    REPORTE DE ANÁLISIS LÉXICO                        
+======================================================================
+Archivo analizado : algoritmo3.scala
+Ruta fuente       : algoritmos de prueba/Morocho Sani Kevin Matías/algoritmo3.scala
+Responsable       : KevinMorocho
+Fecha y hora      : 14/11/2026 12:11:55
+======================================================================
+
+LÍNEA   TIPO DE TOKEN            LEXEMA
+----------------------------------------------------------------------
+10      VAL                      val
+10      ID                       tasaImpuesto
+10      COLON                    :
+10      TYPE_FLOAT               Float
+10      EQUALS                   =
+10      FLOAT_LITERAL            0.15
+11      VAR                      var
+11      ID                       subtotal
+11      EQUALS                   =
+11      INT_LITERAL              100
+12      VAR                      var
+12      ID                       totalPagar
+12      COLON                    :
+12      TYPE_FLOAT               Float
+12      EQUALS                   =
+12      FLOAT_LITERAL            0.0
+13      VAL                      val
+13      ID                       moneda
+13      COLON                    :
+13      TYPE_STRING              String
+13      EQUALS                   =
+13      STRING_LITERAL           USD
+14      VAL                      val
+14      ID                       esClienteFrecuente
+14      EQUALS                   =
+14      TRUE                     true
+17      VAL                      val
+17      ID                       descuento
+17      EQUALS                   =
+17      INT_LITERAL              10
+17      TIMES                    *
+17      INT_LITERAL              2
+18      ID                       totalPagar
+18      EQUALS                   =
+18      ID                       subtotal
+18      PLUS                     +
+18      LPAREN                   (
+18      ID                       subtotal
+18      TIMES                    *
+18      ID                       tasaImpuesto
+18      RPAREN                   )
+18      MINUS                    -
+18      ID                       descuento
+21      VAL                      val
+21      ID                       mensajeFactura
+21      EQUALS                   =
+21      STRING_LITERAL           Total a pagar: 
+21      PLUS                     +
+21      ID                       totalPagar
+21      PLUS                     +
+21      STRING_LITERAL            
+21      PLUS                     +
+21      ID                       moneda
+22      VAL                      val
+22      ID                       resumenItems
+22      EQUALS                   =
+22      ID                       subtotal
+22      PLUS                     +
+22      STRING_LITERAL            articulos procesados
+25      ID                       subtotal
+25      EQUALS                   =
+25      INT_LITERAL              150
+26      ID                       subtotal
+26      PLUS_EQUAL               +=
+26      INT_LITERAL              25
+27      ID                       totalPagar
+27      TIMES_EQUAL              *=
+27      FLOAT_LITERAL            1.05
+30      DEF                      def
+30      ID                       calcularEnvio
+30      LPAREN                   (
+30      ID                       peso
+30      COLON                    :
+30      TYPE_INT                 Int
+30      RPAREN                   )
+30      COLON                    :
+30      TYPE_FLOAT               Float
+30      EQUALS                   =
+30      LBRACE                   {
+31      VAL                      val
+31      ID                       tarifaBase
+31      COLON                    :
+31      TYPE_FLOAT               Float
+31      EQUALS                   =
+31      FLOAT_LITERAL            5.5
+32      RETURN                   return
+32      ID                       peso
+32      TIMES                    *
+32      ID                       tarifaBase
+33      RBRACE                   }
+35      IF                       if
+35      LPAREN                   (
+35      ID                       subtotal
+35      GREATER_THAN             >
+35      INT_LITERAL              100
+35      AND                      &&
+35      ID                       esClienteFrecuente
+35      RPAREN                   )
+35      LBRACE                   {
+36      PRINTLN                  println
+36      LPAREN                   (
+36      ID                       mensajeFactura
+36      RPAREN                   )
+37      RBRACE                   }
+45      VAL                      val
+45      ID                       tasaImpuesto
+45      COLON                    :
+45      TYPE_FLOAT               Float
+45      EQUALS                   =
+45      FLOAT_LITERAL            0.12
+46      VAR                      var
+46      ID                       subtotal
+46      EQUALS                   =
+46      INT_LITERAL              200
+49      VAL                      val
+49      ID                       calculoInvalido
+49      EQUALS                   =
+49      ID                       variableFantasma
+49      PLUS                     +
+49      INT_LITERAL              50
+50      ID                       otroIdentificadorInexistente
+50      EQUALS                   =
+50      INT_LITERAL              10
+51      PRINTLN                  println
+51      LPAREN                   (
+51      ID                       datoNoDefinido
+51      RPAREN                   )
+54      ID                       tasaImpuesto
+54      EQUALS                   =
+54      FLOAT_LITERAL            0.2
+55      ID                       moneda
+55      EQUALS                   =
+55      STRING_LITERAL           EUR
+58      ID                       descuento
+58      PLUS_EQUAL               +=
+58      INT_LITERAL              5
+59      ID                       tasaImpuesto
+59      TIMES_EQUAL              *=
+59      INT_LITERAL              2
+62      VAL                      val
+62      ID                       errorMultiplicacion
+62      EQUALS                   =
+62      STRING_LITERAL           Juan
+62      TIMES                    *
+62      INT_LITERAL              5
+63      VAL                      val
+63      ID                       errorResta
+63      EQUALS                   =
+63      ID                       moneda
+63      MINUS                    -
+63      INT_LITERAL              10
+64      VAL                      val
+64      ID                       errorDivision
+64      EQUALS                   =
+64      ID                       esClienteFrecuente
+64      DIVIDE                   /
+64      INT_LITERAL              2
+65      VAL                      val
+65      ID                       errorModulo
+65      EQUALS                   =
+65      STRING_LITERAL           Texto
+65      MODULE                   %
+65      INT_LITERAL              3
+66      VAL                      val
+66      ID                       errorSumaBool
+66      EQUALS                   =
+66      TRUE                     true
+66      PLUS                     +
+66      INT_LITERAL              15
+
+======================================================================
+REGISTRO DE ERRORES LÉXICOS
+======================================================================
+No se detectaron errores léxicos. Todos los tokens fueron clasificados con éxito.
