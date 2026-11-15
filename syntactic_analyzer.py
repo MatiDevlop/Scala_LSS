@@ -362,9 +362,7 @@ def p_read_function(p):
 def p_error(p):
     if p:
         errores_sintacticos.append(f"Error sintáctico en la línea {p.lineno}: '{p.value}'")
-        print(f"Error sintáctico en la línea {p.lineno}: '{p.value}'")
     else:
         errores_sintacticos.append("Error sintáctico: fin de archivo inesperado")
-        print("Error sintáctico: fin de archivo inesperado")
 
 parser = yacc.yacc()
