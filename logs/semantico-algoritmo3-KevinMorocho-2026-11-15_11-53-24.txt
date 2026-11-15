@@ -1,0 +1,85 @@
+=======================================================
+          REPORTE DEL ANALIZADOR SEMÁNTICO             
+=======================================================
+Responsable del Log       : KevinMorocho
+Carpeta del Integrante    : Morocho Sani Kevin Matías
+Archivo Analizado         : algoritmo3.scala
+Fecha y Hora (Guayaquil)  : 2026-11-15 11:53:24
+=======================================================
+
+--- CÓDIGO FUENTE EVALUADO ---
+001 | // =========================================================================
+002 | // PRUEBA DE ANÁLISIS SEMÁNTICO - SCALA
+003 | // =========================================================================
+004 | 
+005 | // -------------------------------------------------------------------------
+006 | // SECCIÓN 1: CASOS VÁLIDOS (Deben pasar sin generar errores)
+007 | // -------------------------------------------------------------------------
+008 | 
+009 | // 1. Declaraciones válidas (tipadas e inferidas, val y var)
+010 | val tasaImpuesto: Float = 0.15f
+011 | var subtotal = 100
+012 | var totalPagar: Float = 0.0f
+013 | val moneda: String = "USD"
+014 | val esClienteFrecuente = true
+015 | 
+016 | // 2. Operaciones aritméticas compatibles (Int y Float)
+017 | val descuento = 10 * 2
+018 | totalPagar = subtotal + (subtotal * tasaImpuesto) - descuento
+019 | 
+020 | // 3. Concatenación válida con '+' (al menos un operando es String)
+021 | val mensajeFactura = "Total a pagar: " + totalPagar + " " + moneda
+022 | val resumenItems = subtotal + " articulos procesados"
+023 | 
+024 | // 4. Reasignaciones y asignaciones compuestas válidas sobre variables 'var'
+025 | subtotal = 150
+026 | subtotal += 25
+027 | totalPagar *= 1.05f
+028 | 
+029 | // 5. Estructuras de control y funciones tipadas válidas
+030 | def calcularEnvio(peso: Int): Float = {
+031 |     val tarifaBase: Float = 5.5f
+032 |     return peso * tarifaBase
+033 | }
+034 | 
+035 | if (subtotal > 100 && esClienteFrecuente) {
+036 |     println(mensajeFactura)
+037 | }
+038 | 
+039 | /*
+040 | // -------------------------------------------------------------------------
+041 | // SECCIÓN 2: ERRORES SEMÁNTICOS INDUCIDOS (Deben ser detectados)
+042 | // -------------------------------------------------------------------------
+043 | 
+044 | // ERROR 1 (Regla 1 - Tabla 14): Redeclaración de identificador existente
+045 | val tasaImpuesto: Float = 0.12f
+046 | var subtotal = 200
+047 | 
+048 | // ERROR 2 (Regla 1 - Tabla 14): Uso de identificador no declarado
+049 | val calculoInvalido = variableFantasma + 50
+050 | otroIdentificadorInexistente = 10
+051 | println(datoNoDefinido)
+052 | 
+053 | // ERROR 3 (Regla 2 - Tabla 15): Reasignación simple sobre constante 'val'
+054 | tasaImpuesto = 0.20f
+055 | moneda = "EUR"
+056 | 
+057 | // ERROR 4 (Regla 2 - Tabla 15): Asignación compuesta sobre constante 'val'
+058 | descuento += 5
+059 | tasaImpuesto *= 2
+060 | 
+061 | // ERROR 5 (Regla 3 - Tabla 16): Operaciones aritméticas con tipos incompatibles
+062 | val errorMultiplicacion = "Juan" * 5
+063 | val errorResta = moneda - 10
+064 | val errorDivision = esClienteFrecuente / 2
+065 | val errorModulo = "Texto" % 3
+066 | val errorSumaBool = true + 15
+067 | */
+=======================================================
+
+--- RESULTADO DEL ANÁLISIS SEMÁNTICO ---
+ESTADO: ÉXITO (0 Errores)
+
+ No se detectaron errores semánticos.
+
+=======================================================

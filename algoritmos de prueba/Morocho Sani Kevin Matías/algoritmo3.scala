@@ -36,7 +36,7 @@ if (subtotal > 100 && esClienteFrecuente) {
     println(mensajeFactura)
 }
 
-
+/*
 // -------------------------------------------------------------------------
 // SECCIÓN 2: ERRORES SEMÁNTICOS INDUCIDOS (Deben ser detectados)
 // -------------------------------------------------------------------------
@@ -64,3 +64,4 @@ val errorResta = moneda - 10
 val errorDivision = esClienteFrecuente / 2
 val errorModulo = "Texto" % 3
 val errorSumaBool = true + 15
+*/
