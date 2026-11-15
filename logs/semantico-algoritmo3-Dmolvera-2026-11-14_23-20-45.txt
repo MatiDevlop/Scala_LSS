@@ -1,0 +1,68 @@
+=======================================================
+          REPORTE DEL ANALIZADOR SEMÁNTICO             
+=======================================================
+Responsable del Log       : Dmolvera
+Carpeta del Integrante    : Olvera Vera David Mateo
+Archivo Analizado         : algoritmo3.scala
+Fecha y Hora (Guayaquil)  : 2026-11-14 23:20:45
+=======================================================
+
+--- CÓDIGO FUENTE EVALUADO ---
+001 | // Algoritmo 3 - Pruebas semanticas 
+002 | 
+003 | // ---------- Parte valida ----------
+004 | var contador: Int = 0
+005 | val limite: Float = 10
+006 | val promedio: Float = 7
+007 | var activo: Boolean = true
+008 | 
+009 | def sumar(a: Int, b: Int): Int = {
+010 |   val total = a + b
+011 |   return total
+012 | }
+013 | 
+014 | def obtenerNota(a: Int): Float = {
+015 |   return a
+016 | }
+017 | 
+018 | if (contador < 5) {
+019 |   println("menor")
+020 | } else if (activo) {
+021 |   println("activo")
+022 | }
+023 | 
+024 | while (contador < 3) {
+025 |   contador = contador + 1
+026 | }
+027 | 
+028 | // ---------- Errores  ----------
+029 | // Conversion
+030 | val valorEntero: Int = 12.85F
+031 | 
+032 | // Estructuras de control
+033 | while (contador) {
+034 |   println("ciclo")
+035 | }
+036 | 
+037 | if (activo == true) {
+038 |   println("ok")
+039 | } else if (limite) {
+040 |   println("error")
+041 | }
+042 | 
+043 | // Retorno de funciones
+044 | def obtenerPromedio(a: Float, b: Float): Float = {
+045 |   val suma = a + b
+046 |   return "Resultado " + suma
+047 | }
+=======================================================
+
+--- RESULTADO DEL ANÁLISIS SEMÁNTICO ---
+ESTADO: FALLO (4 Errores Encontrados)
+
+ [ERROR] Error Semántico (Conversión) en línea 30: No se permite convertir 'Float' a 'Int' de forma implícita.
+ [ERROR] Error Semántico (Estructuras de control) en línea 33: La condición del 'while' debe ser de tipo Boolean, pero es 'Int'.
+ [ERROR] Error Semántico (Estructuras de control) en línea 39: La condición del 'if' debe ser de tipo Boolean, pero es 'Float'.
+ [ERROR] Error Semántico (Retorno de funciones) en línea 46: La función declara retornar 'Float' pero retorna 'String'.
+
+=======================================================
