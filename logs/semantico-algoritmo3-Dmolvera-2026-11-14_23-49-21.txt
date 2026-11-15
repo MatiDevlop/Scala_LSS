@@ -1,0 +1,44 @@
+=======================================================
+          REPORTE DEL ANALIZADOR SEMÁNTICO             
+=======================================================
+Responsable del Log       : Dmolvera
+Carpeta del Integrante    : Olvera Vera David Mateo
+Archivo Analizado         : algoritmo3.scala
+Fecha y Hora (Guayaquil)  : 2026-11-14 23:49:21
+=======================================================
+
+--- CÓDIGO FUENTE EVALUADO ---
+001 | // Algoritmo 3 - Pruebas semanticas 
+002 | 
+003 | // ---------- Parte valida ----------
+004 | var contador: Int = 0
+005 | val limite: Float = 10
+006 | val promedio: Float = 7
+007 | var activo: Boolean = true
+008 | 
+009 | def sumar(a: Int, b: Int): Int = {
+010 |   val total = a + b
+011 |   return total
+012 | }
+013 | 
+014 | def obtenerNota(a: Int): Float = {
+015 |   return a
+016 | }
+017 | 
+018 | if (contador < 5) {
+019 |   println("menor")
+020 | } else if (activo) {
+021 |   println("activo")
+022 | }
+023 | 
+024 | while (contador < 3) {
+025 |   contador = contador + 1
+026 | }
+=======================================================
+
+--- RESULTADO DEL ANÁLISIS SEMÁNTICO ---
+ESTADO: ÉXITO (0 Errores)
+
+ No se detectaron errores semánticos.
+
+=======================================================
