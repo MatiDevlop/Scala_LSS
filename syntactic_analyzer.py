@@ -7,11 +7,14 @@ tabla_simbolos ={
 
 variables_ocultas = {}
 errores_semanticos = []
+errores_sintacticos = []
+retornos_pendientes = []
+
 
 def restaurar_ambito_parametros(parametros):
     for param in parametros:
         if param in variables_ocultas:
-            tabla_simpolos["variables"][param] = variables_ocultas.pop(param)
+            tabla_simbolos["variables"][param] = variables_ocultas.pop(param)
         else:
             tabla_simbolos["variables"].pop(param, None)
 
@@ -62,7 +65,10 @@ def p_asignacion_tipada(p):
     mutabilidad = p[1]
     nombre = p[2]
     tipo = p[4]
-
+    #Conversion: no se puede guardar un Float en un Int
+    if tipo == "Int" and p[6] == "Float":
+        errores_semanticos.append(f"Error Semántico (Conversión) en línea {p.lineno(2)}: No se permite convertir 'Float' a 'Int' de forma implícita.")
+    
     if nombre in tabla_simbolos["variables"]:
         errores_semanticos.append(f"Error Semántico en línea {p.lineno(2)}: La variable '{nombre}' ya ha sido declarada previamente.")
     else:
@@ -113,16 +119,20 @@ def p_control_structure(p):
     '''control_structure : if_statement
                          | while_statement
                          | for_statement'''
-    pass
+    pass  
 
 def p_if_statement(p):
     '''if_statement : IF LPAREN expression RPAREN block
                     | IF LPAREN expression RPAREN block ELSE block'''
-    pass
+    #Estructuras de control: la condicion del if debe ser Boolean
+    if p[3] != None and p[3] != "Error" and p[3] != "Boolean":
+        errores_semanticos.append(f"Error Semántico (Estructuras de control) en línea {p.lineno(1)}: La condición del 'if' debe ser de tipo Boolean, pero es '{p[3]}'.")
 
 def p_while_statement(p):
     '''while_statement : WHILE LPAREN expression RPAREN block'''
-    pass
+    #Estructuras de control: la condicion del while debe ser Boolean
+    if p[3] != None and p[3] != "Error" and p[3] != "Boolean":
+        errores_semanticos.append(f"Error Semántico (Estructuras de control) en línea {p.lineno(1)}: La condición del 'while' debe ser de tipo Boolean, pero es '{p[3]}'.")
 
 def p_for_statement(p):
     '''for_statement : FOR LPAREN ID ARROW_LEFT expression TO expression RPAREN block'''
@@ -223,11 +233,18 @@ def p_expression_array(p):
 
 def p_function_def_block(p):
     '''function_def : DEF ID LPAREN param_list RPAREN COLON tipo EQUALS block'''
+    #Retorno de funciones: revisa los return guardados contra el tipo declarado
+    tipo_decl = p[7]
+    for tipo_ret, linea in retornos_pendientes:
+        if tipo_ret != None and tipo_ret != "Error" and tipo_ret != tipo_decl and not (tipo_decl == "Float" and tipo_ret == "Int"):
+            errores_semanticos.append(f"Error Semántico (Retorno de funciones) en línea {linea}: La función declara retornar '{tipo_decl}' pero retorna '{tipo_ret}'.")
+    retornos_pendientes.clear()
     restaurar_ambito_parametros(p[4])
 
 def p_return_statement(p):
     '''statement : RETURN expression opt_semicolon'''
-    pass
+    #Retorno de funciones: guarda el tipo y la linea del return
+    retornos_pendientes.append((p[2], p.lineno(1)))
 
 def p_statement_expression(p):
     '''statement : expression opt_semicolon'''
@@ -258,7 +275,9 @@ def p_statement_david(p):
 #estructura de control: else if
 def p_if_else_if(p):
     '''if_statement : IF LPAREN expression RPAREN block ELSE if_statement'''
-    pass
+    #Estructuras de control: la condicion del else if debe ser Boolean
+    if p[3] != None and p[3] != "Error" and p[3] != "Boolean":
+        errores_semanticos.append(f"Error Semántico (Estructuras de control) en línea {p.lineno(1)}: La condición del 'if' debe ser de tipo Boolean, pero es '{p[3]}'.")
 
 #funciones
 def p_param_list(p):
@@ -290,7 +309,15 @@ def p_function_def_inline(p):
     '''function_def : DEF ID LPAREN param_list RPAREN COLON tipo EQUALS expression opt_semicolon
                     | DEF ID LPAREN RPAREN COLON tipo EQUALS expression opt_semicolon'''
     if len(p) == 11:
+        tipo_decl = p[7]
+        tipo_ret = p[9]
         restaurar_ambito_parametros(p[4])
+    else:
+        tipo_decl = p[6]
+        tipo_ret = p[8]
+    #Retorno de funciones: el tipo de la expresion debe coincidir con el declarado
+    if tipo_ret != None and tipo_ret != "Error" and tipo_ret != tipo_decl and not (tipo_decl == "Float" and tipo_ret == "Int"):
+        errores_semanticos.append(f"Error Semántico (Retorno de funciones) en línea {p.lineno(2)}: La función declara retornar '{tipo_decl}' pero retorna '{tipo_ret}'.")
 
 def p_expression_lambda(p):
     '''expression : LPAREN param_list RPAREN ARROW_RIGHT expression
@@ -330,10 +357,14 @@ def p_read_function(p):
     '''read_function : READLINE
                      | READINT'''
     p[0] = "Int" if p[1] == "readInt" else "String"
-#-----FIN David Olvera -----
 
 #Función de manejo de errores
 def p_error(p):
-    errores_sintacticos.append(f"Error sintáctico en la línea {p.lineno}: '{p.value}'")
+    if p:
+        errores_sintacticos.append(f"Error sintáctico en la línea {p.lineno}: '{p.value}'")
+        print(f"Error sintáctico en la línea {p.lineno}: '{p.value}'")
+    else:
+        errores_sintacticos.append("Error sintáctico: fin de archivo inesperado")
+        print("Error sintáctico: fin de archivo inesperado")
 
 parser = yacc.yacc()
