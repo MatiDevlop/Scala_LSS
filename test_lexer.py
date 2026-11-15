@@ -5,8 +5,6 @@ from zoneinfo import ZoneInfo
 
 from lexic_analyzer import lexer, lista_errores
 
-# Evitar la creación de carpetas __pycache__
-sys.dont_write_bytecode = True
 
 CARPETA_BASE = "algoritmos de prueba"
 CARPETA_LOGS = "logs"

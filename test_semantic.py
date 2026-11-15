@@ -1,8 +1,14 @@
 import os
 from datetime import datetime
 from zoneinfo import ZoneInfo
-from lexic_analyzer import lexer
-from syntactic_analyzer import parser, tabla_simbolos, variables_ocultas, errores_semanticos
+from lexic_analyzer import lexer, lista_errores
+from syntactic_analyzer import (
+    parser,
+    tabla_simbolos,
+    variables_ocultas,
+    errores_sintacticos,
+    errores_semanticos,
+)
 
 def ejecutar_prueba_semantica(carpeta_integrante, responsable, nombre_algoritmo):
     # 1. Construir la ruta exacta dentro de "algoritmos de prueba"
@@ -15,10 +21,12 @@ def ejecutar_prueba_semantica(carpeta_integrante, responsable, nombre_algoritmo)
     with open(ruta_archivo, "r", encoding="utf-8") as archivo:
         codigo_fuente = archivo.read()
 
-    # 2. Reiniciar estado del lexer, tabla de símbolos y lista de errores
+    # 2. Reiniciar estado completo del lexer, parser, tabla de símbolos y listas de errores
     lexer.lineno = 1
+    lista_errores.clear()
     tabla_simbolos["variables"].clear()
     variables_ocultas.clear()
+    errores_sintacticos.clear()
     errores_semanticos.clear()
 
     # 3. Ejecutar el análisis sintáctico y semántico
@@ -100,7 +108,7 @@ if __name__ == "__main__":
     # 3. Preguntar por el nombre del archivo sin extensión
     nombre_algoritmo = input("Nombre del algoritmo (sin extensión .scala, ej. algoritmo3): ").strip()
     
-    # Por si acaso el usuario escribe ".scala" por costumbre, lo limpiamos
+    # Limpieza preventiva si el usuario incluye la extensión
     if nombre_algoritmo.endswith(".scala"):
         nombre_algoritmo = nombre_algoritmo[:-6]
 

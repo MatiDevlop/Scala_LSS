@@ -1,10 +1,9 @@
 import os
 import sys
 from datetime import datetime
-import ply.yacc as yacc
-from lexic_analyzer import tokens
-import syntactic_analyzer
 from zoneinfo import ZoneInfo
+from lexic_analyzer import lexer
+import syntactic_analyzer
 
 # Definición de las carpetas según la estructura del proyecto
 CARPETA_ENTRADA = "algoritmos de prueba"
@@ -34,55 +33,39 @@ def main():
     if not nombre_archivo.endswith(".scala"):
         nombre_archivo += ".scala"
 
-    # Ruta completa del archivo .scala dentro de la carpeta del integrante
     ruta_archivo_scala = os.path.join(ruta_carpeta_integrante, nombre_archivo)
 
-    # Validar existencia del archivo .scala
     if not os.path.exists(ruta_archivo_scala):
         print(f"\n[ERROR] El archivo '{nombre_archivo}' no existe en la ruta: {ruta_archivo_scala}")
         print("Cerrando el programa...")
         sys.exit(1)
 
-    # Asegurar que la carpeta de salida 'logs' exista
     os.makedirs(CARPETA_SALIDA, exist_ok=True)
 
-    # Leer el contenido del archivo .scala
     with open(ruta_archivo_scala, "r", encoding="utf-8") as f:
         lineas = f.readlines()
 
     nombre_base = os.path.splitext(os.path.basename(nombre_archivo))[0]
-    
-    # Generar la marca de tiempo actual (fecha y hora)
     timestamp = datetime.now(ZONA_ECUADOR).strftime("%Y-%m-%d_%H-%M-%S")
     
-    # Construir el nombre del archivo de salida con la estructura solicitada: sintactico-<algoritmo>-<nombre>-<fecha>-<hora>.txt
     nombre_archivo_log = f"sintactico-{nombre_base}-{nombre_log_integrante}-{timestamp}.txt"
     archivo_log_salida = os.path.join(CARPETA_SALIDA, nombre_archivo_log)
 
     print(f"\nProcesando '{ruta_archivo_scala}'...")
     print(f"Guardando reporte en '{archivo_log_salida}'...\n")
 
-    # Lista para recolectar errores durante el parsing
-    errores_sintacticos = []
+    # Limpiar estados previos antes de parsear
+    lexer.lineno = 1
+    syntactic_analyzer.errores_sintacticos.clear()
+    syntactic_analyzer.errores_semanticos.clear()
+    syntactic_analyzer.tabla_simbolos["variables"].clear()
+    syntactic_analyzer.variables_ocultas.clear()
 
-    # Redefinir la función de captura de errores para el log
-    def custom_p_error(p):
-        if p:
-            msg = f"Error sintáctico en línea {p.lineno}: Token inesperado '{p.value}' (Tipo: {p.type})"
-        else:
-            msg = "Error sintáctico: Fin de archivo (EOF) inesperado"
-        errores_sintacticos.append(msg)
-
-    syntactic_analyzer.parser.errorfunc = custom_p_error
-
-    # Analizar el código cargado
+    # Ejecutar el análisis sintáctico
     codigo_completo = "".join(lineas)
-    
-    # Reiniciar contador de líneas del lexer si está disponible
-    if hasattr(syntactic_analyzer, 'lexer'):
-        syntactic_analyzer.lexer.lineno = 1
+    syntactic_analyzer.parser.parse(codigo_completo, lexer=lexer)
 
-    resultado = syntactic_analyzer.parser.parse(codigo_completo)
+    errores = syntactic_analyzer.errores_sintacticos
 
     # Generar el reporte / log del Analizador Sintáctico en la carpeta 'logs'
     with open(archivo_log_salida, "w", encoding="utf-8") as log_file:
@@ -101,22 +84,21 @@ def main():
         log_file.write("\n==================================================\n\n")
 
         log_file.write("--- RESULTADO DEL ANÁLISIS SINTÁCTICO ---\n")
-        if not errores_sintacticos:
+        if not errores:
             log_file.write("ESTADO: ÉXITO (0 Errores Sintácticos)\n")
             log_file.write("El código analizado cumple con todas las reglas gramaticales definidas.\n")
         else:
-            log_file.write(f"ESTADO: FALLO ({len(errores_sintacticos)} Errores Encontrados)\n\n")
-            for err in errores_sintacticos:
+            log_file.write(f"ESTADO: FALLO ({len(errores)} Errores Encontrados)\n\n")
+            for err in errores:
                 log_file.write(f" [ERROR] {err}\n")
 
         log_file.write("\n==================================================\n")
 
-    # Resumen en consola
     print("=== ANÁLISIS FINALIZADO ===")
-    if not errores_sintacticos:
+    if not errores:
         print("✔ El código es sintácticamente VÁLIDO.")
     else:
-        print(f"✖ Se encontraron {len(errores_sintacticos)} errores sintácticos.")
+        print(f"✖ Se encontraron {len(errores)} errores sintácticos.")
     print(f"Reporte generado en: {archivo_log_salida}")
 
 if __name__ == '__main__':
