@@ -484,6 +484,8 @@ class InterfazCompiladorScala:
             syntactic_analyzer.errores_sintacticos.clear()
         syntactic_analyzer.errores_semanticos.clear()
         syntactic_analyzer.tabla_simbolos["variables"].clear()
+        syntactic_analyzer.retornos_pendientes.clear()
+        syntactic_analyzer.pila_ambitos.clear()
         if hasattr(syntactic_analyzer, "variables_ocultas"):
             syntactic_analyzer.variables_ocultas.clear()
 

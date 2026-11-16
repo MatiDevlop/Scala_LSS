@@ -9,6 +9,7 @@ variables_ocultas = {}
 errores_semanticos = []
 errores_sintacticos = []
 retornos_pendientes = []
+pila_ambitos = []
 
 
 def restaurar_ambito_parametros(parametros):
@@ -134,9 +135,21 @@ def p_while_statement(p):
     if p[3] != None and p[3] != "Error" and p[3] != "Boolean":
         errores_semanticos.append(f"Error Semántico (Estructuras de control) en línea {p.lineno(1)}: La condición del 'while' debe ser de tipo Boolean, pero es '{p[3]}'.")
 
+def p_for_header(p):
+    '''for_header : FOR LPAREN ID ARROW_LEFT expression TO expression RPAREN'''
+    nombre = p[3]
+    if nombre in tabla_simbolos["variables"] and nombre not in variables_ocultas:
+        variables_ocultas[nombre] = tabla_simbolos["variables"][nombre].copy()
+    tabla_simbolos["variables"][nombre] = {
+        "tipo": "Int",
+        "categoria": "val",
+        "es_parametro": True
+    }
+    p[0] = nombre
+
 def p_for_statement(p):
-    '''for_statement : FOR LPAREN ID ARROW_LEFT expression TO expression RPAREN block'''
-    pass
+    '''for_statement : for_header block'''
+    restaurar_ambito_parametros([p[1]])    
 
 def p_expression_aritmetica(p):
     '''expression : expression PLUS expression
@@ -232,14 +245,22 @@ def p_expression_array(p):
     pass
 
 def p_function_def_block(p):
-    '''function_def : DEF ID LPAREN param_list RPAREN COLON tipo EQUALS block'''
+    '''function_def : DEF ID LPAREN param_list RPAREN COLON tipo EQUALS function_body_start block'''
     #Retorno de funciones: revisa los return guardados contra el tipo declarado
     tipo_decl = p[7]
     for tipo_ret, linea in retornos_pendientes:
         if tipo_ret != None and tipo_ret != "Error" and tipo_ret != tipo_decl and not (tipo_decl == "Float" and tipo_ret == "Int"):
             errores_semanticos.append(f"Error Semántico (Retorno de funciones) en línea {linea}: La función declara retornar '{tipo_decl}' pero retorna '{tipo_ret}'.")
     retornos_pendientes.clear()
+    antes = pila_ambitos.pop()
+    for nombre in list(tabla_simbolos["variables"].keys()):
+        if nombre not in antes:
+            del tabla_simbolos["variables"][nombre]
     restaurar_ambito_parametros(p[4])
+
+def p_function_body_start(p):
+    '''function_body_start : empty'''
+    pila_ambitos.append(set(tabla_simbolos["variables"].keys()))
 
 def p_return_statement(p):
     '''statement : RETURN expression opt_semicolon'''
