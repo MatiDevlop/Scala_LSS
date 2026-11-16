@@ -11,6 +11,11 @@ errores_sintacticos = []
 retornos_pendientes = []
 pila_ambitos = []
 
+def calcular_columna(texto, lexpos):
+    ultimo_salto = texto.rfind('\n', 0, lexpos)
+    if ultimo_salto < 0:
+        return lexpos + 1
+    return lexpos - ultimo_salto
 
 def restaurar_ambito_parametros(parametros):
     for param in parametros:
@@ -382,8 +387,20 @@ def p_read_function(p):
 #Función de manejo de errores
 def p_error(p):
     if p:
-        errores_sintacticos.append(f"Error sintáctico en la línea {p.lineno}: '{p.value}'")
+        # Tipo 1: Token inesperado en la entrada
+        columna = calcular_columna(p.lexer.lexdata, p.lexpos)
+        errores_sintacticos.append(
+            f"Error sintáctico en línea {p.lineno}, columna {columna}: "
+            f"Token inesperado '{p.value}' (Tipo: {p.type}). "
+            f"Verifique la estructura de la sentencia o delimitadores faltantes."
+        )
+        # Recuperación de errores: descarta el token problemático para seguir analizando el resto del archivo
+        parser.errok()
     else:
-        errores_sintacticos.append("Error sintáctico: fin de archivo inesperado")
+        # Tipo 2: Fin de archivo (EOF) inesperado
+        errores_sintacticos.append(
+            "Error sintáctico al final del archivo (EOF): "
+            "Se esperaba cerrar un bloque '}', paréntesis ')' o completar una expresión antes de finalizar."
+        )
 
 parser = yacc.yacc()
