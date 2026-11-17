@@ -306,7 +306,7 @@ def p_param_list(p):
                   | param'''
     if len(p) == 4:
         if p[3] in p[1]:
-            errores_semanticos.append(f"Error Semántico en línea {p.lineno(3)}: Parámetro duplicado'{p[3]}' en la misma funcion.")
+            errores_semanticos.append(f"Error Semántico en línea {p.lineno(2)}: Parámetro duplicado'{p[3]}' en la misma funcion.")
         p[0] = p[1] + [p[3]]
     else:
         p[0] = [p[1]]
