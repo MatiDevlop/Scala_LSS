@@ -394,8 +394,6 @@ def p_error(p):
             f"Token inesperado '{p.value}' (Tipo: {p.type}). "
             f"Verifique la estructura de la sentencia o delimitadores faltantes."
         )
-        # Recuperación de errores: descarta el token problemático para seguir analizando el resto del archivo
-        parser.errok()
     else:
         # Tipo 2: Fin de archivo (EOF) inesperado
         errores_sintacticos.append(
