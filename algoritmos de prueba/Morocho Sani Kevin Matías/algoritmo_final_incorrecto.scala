@@ -25,8 +25,8 @@ var acumuladoErr: Float = 100.5f
 acumuladoErr += 20.4
 acumuladoErr %= 2
 acumuladoErr **= 2
-var exprMalFormada: Int = 10 + * 5
 var parentesisIncompleto: Int = (15 - 3 * 2
+var exprMalFormada: Int = 10 + * 5
 
 // Expresiones lógicas y relacionales inválidas
 var mayor_edad = true
